@@ -1,0 +1,9 @@
+.metrics-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.metric-count {
+    margin-left: 8px;
+}

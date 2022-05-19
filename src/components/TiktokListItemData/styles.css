@@ -1,0 +1,9 @@
+.left-side-content {
+    display: flex;
+    margin-right: 12px;
+}
+
+.video-content-container {
+    text-align: left;
+    margin-left: 16px;
+}
