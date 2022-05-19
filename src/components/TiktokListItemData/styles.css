@@ -1,10 +1,12 @@
 .left-side-content {
     display: flex;
     margin-right: 12px;
+    width: 70%;  
 }
 
 .content-thumbnail {
     border-radius: 4px;
+    min-width: 100px;
 }
 
 .video-content-container {
@@ -12,7 +14,7 @@
     margin-left: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
 .video-content-heading {

@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <FakeTokHeader />
       <HashtagList hashtags={hashtags} selectedHashtag={selectedHashtag} selectHashtag={selectHashtag} />
-      <TiktokList tiktokData={mockedTikTokData} />
+      <TiktokList tiktokData={videosContent} />
     </div>
   );
 }

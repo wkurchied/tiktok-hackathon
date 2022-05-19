@@ -4,7 +4,7 @@ import './styles.css';
 const TiktokListItemLeftContent = ({ videoContent }) => {
   return (
     <div className="left-side-content">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkBxxlPDkOdmKZW7btolKxZCDZcFXnf_9Axw&usqp=CAU" className="content-thumbnail" />
+      <img src={videoContent.thumbnail} className="content-thumbnail" />
       
       <div className="video-content-container">
         <div className="video-content-item">
@@ -24,7 +24,7 @@ const TiktokListItemLeftContent = ({ videoContent }) => {
 
         <div className="video-content-item">
           <span className="video-content-heading">Tags: </span> 
-          <span className="video-content-value">{videoContent.tags}</span>
+          <span className="video-content-value">{videoContent.tags.join(', ')}</span>
         </div>
       </div>
     </div>
