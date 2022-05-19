@@ -26,6 +26,7 @@ class TikTokVideo(BaseModel):
     viewsCount: str
     sharesCount: str
     likesCount: str
+    thumbnail:str
 
 
 @app.get("/hashtags")
@@ -60,7 +61,8 @@ def get_videos_by_hashtag(hashtag):
             tags=parse_hashtags(h['desc']),
             viewsCount=human_format(h['stats']['playCount']),
             sharesCount=human_format(h['stats']['shareCount']),
-            likesCount=human_format(h['stats']['diggCount'])
+            likesCount=human_format(h['stats']['diggCount']),
+            thumbnail=h['video']['shareCover'][1]
         )
         found_videos.append(video)
     return found_videos
@@ -78,4 +80,4 @@ def human_format(num):
 
 
 # if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+#     print(get_videos_by_hashtag('uk'))
