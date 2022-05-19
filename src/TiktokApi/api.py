@@ -11,6 +11,27 @@ from urllib.parse import urlencode, quote
 class Tiktok:
     def __init__(self):
         self.BASE_URL = 'https://www.tiktok.com/node/'
+
+    def get_videos_hashtag(self, max_cursor = 0, cookies = {}):
+
+        try:
+            res = requests.get(
+                "https://www.tiktok.com/tag/uk?lang=en",
+                headers={
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                    "authority": "www.tiktok.com",
+                    # "path": "/@{}".format(quote(username)),
+                    "Accept-Encoding": "gzip, deflate",
+                    "Connection": "keep-alive",
+                    "Host": "www.tiktok.com",
+                    "User-Agent": "Mozilla/5.0  (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/86.0.170 Chrome/80.0.3987.170 Safari/537.36",
+                }
+            )
+            resp = self.__extra_next_data__(res.text)
+            return json.loads(resp)['UserModule']
+        except Exception:
+            print(traceback.format_exc())
+            return False
         
     def getTrendingFeed(self, max_cursor = 0, cookies = {}):
         param = {
@@ -201,12 +222,12 @@ class Tiktok:
             print(traceback.format_exc())
             return False
 
-    def getInfoChallenge(self, challenge):
+    def get_hashtags(self, challenge):
         if challenge == '':
             return 'Challenge is required'
         try:
             res = requests.get(
-                'https://www.tiktok.com/tag/{}'.format(quote(challenge)),
+                'https://www.tiktok.com/tag/{}?lang=en'.format(quote(challenge)),
                 headers={
                     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                     "authority": "www.tiktok.com",
@@ -218,7 +239,7 @@ class Tiktok:
                 }
             )
             resp = self.__extra_next_data__(res.text)
-            return json.loads(resp)['ChallengePage']
+            return json.loads(resp)['ItemModule']
         except Exception:
             print(traceback.format_exc())
             return False
