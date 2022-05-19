@@ -6,44 +6,61 @@ from api import Tiktok
 from download import Download
 from functools import reduce
 from TikTokApi import TikTokApi as tiktok
-import pandas as pd
+import uvicorn
+
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
+@app.get("/hashtags")
+async def hashtags():
+    return get_hashtags()
 
-    #     flattened_data = process_results(trending)
-    #
-    # ##Export data to json
-    # # with open('export.json', 'w') as f:
-    # #   json.dump(flattened_data, f)
-    #
-    # # Convert the preprocessed data to a dataframe
-    # df = pd.DataFrame.from_dict(flattened_data, orient='index')
-    # df.to_csv('TikTok_data.csv', index=False)
+@app.get("/videos/{hashtag}")
+async def videos(hashtag):
+    return get_videos_by_hashtag(hashtag)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-
-
+def get_hashtags():
     hashtags_in_trending_videos = []
     Api = Tiktok()
-    top_10_post_hashtag = Api.get_hashtags('uk')
-    for h in top_10_post_hashtag:
+    trending, _ = Api.getTrendingFeed(max_cursor='0')
+    for trend in trending['itemListData']:
+        text = trend['itemInfos']['text']
+        hashtags_in_trending_videos.append( [w.split()[0] for w in text.split('#')[1:]])
+    trending_hashtags = (set(reduce(lambda x,y : x+y, hashtags_in_trending_videos)))
+    return trending_hashtags
+
+
+
+
+def get_videos_by_hashtag(hashtag):
+    found_videos = []
+    Api = Tiktok()
+    # videos, _ = Api.getInfoChallenge(hashtag)
+    # print(videos)
+    # for video in videos:
+    #     print(video)
+    # found_videos
+    top_10_post_hashtag = Api.get_hashtags(hashtag)
+    for h in top_10_post_hashtag.values():
         desc = h['desc']
         created_at = h['createTime']
         video_cover = h['video']['playAddr']
-        view_count = h['stat']['playCount']
-        share_count = h['stat']['shareCount']
-        print(desc, created_at, video_cover, view_count,share_count )
+        view_count = h['stats']['playCount']
+        share_count = h['stats']['shareCount']
+        print(desc, created_at, video_cover, view_count,share_count)
+    return []
 
+    # from TikTokApi.tiktok import TikTokApi
+    #
+    # with TikTokApi() as api:
+    #     hashtag_response = api.hashtag(trending_hashtags.pop())
+    #     hashtag_response.info()
+    #     hashtag_response.as_dict
 
-
-    # trending, _ = Api.getTrendingFeed(max_cursor='0')
-    # for trend in trending['itemListData']:
-    #     text = trend['itemInfos']['text']
-    #     hashtags_in_trending_videos.append( [w.split()[0] for w in text.split('#')[1:]])
-    # trending_hashtags = (set(reduce(lambda x,y : x+y, hashtags_in_trending_videos)))
-    # trending_hashtags.remove('trending')
-
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 
