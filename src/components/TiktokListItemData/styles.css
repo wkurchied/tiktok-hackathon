@@ -3,6 +3,10 @@
     margin-right: 12px;
 }
 
+.content-thumbnail {
+    border-radius: 4px;
+}
+
 .video-content-container {
     text-align: left;
     margin-left: 20px;
