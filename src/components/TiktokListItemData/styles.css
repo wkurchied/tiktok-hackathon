@@ -6,4 +6,16 @@
 .video-content-container {
     text-align: left;
     margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
+
+.video-content-heading {
+    font-weight: 600;
+}
+
+.video-content-value {
+    font-size: 15px;
+    opacity: 0.9;
 }

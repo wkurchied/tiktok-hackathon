@@ -1,7 +1,12 @@
 .metrics-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+
+.metric-icon {
+    color: #00bfff;    
 }
 
 .metric-count {
