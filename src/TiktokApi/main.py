@@ -7,6 +7,7 @@ from download import Download
 from functools import reduce
 from TikTokApi import TikTokApi as tiktok
 import uvicorn
+import numerize
 
 from fastapi import FastAPI
 
@@ -44,12 +45,12 @@ def get_videos_by_hashtag(hashtag):
     # found_videos
     top_10_post_hashtag = Api.get_hashtags(hashtag)
     for h in top_10_post_hashtag.values():
-        desc = h['desc']
+        desc = [w.split()[0] for w in h['desc'].split('#')[1:]]
         created_at = h['createTime']
         video_cover = h['video']['playAddr']
-        view_count = h['stats']['playCount']
-        share_count = h['stats']['shareCount']
-        print(desc, created_at, video_cover, view_count,share_count)
+        view_count = numerize(h['stats']['playCount'])
+        share_count = numerize(h['stats']['shareCount'])
+        print(desc, created_at, video_cover, view_count, share_count)
     return []
 
     # from TikTokApi.tiktok import TikTokApi
