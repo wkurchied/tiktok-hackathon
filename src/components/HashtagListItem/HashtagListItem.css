@@ -7,6 +7,9 @@
     margin: 8px;
     padding: 4px 8px;
     font-weight: bold;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .itemClicked {
