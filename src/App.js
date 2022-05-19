@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import FakeTokHeader from './components/FakeTokHeader/FakeTokHeader';
 import HashtagList from './components/HashtagList/HashtagList';
 import TiktokList from './components/TiktokList';
+import { fetchVideoContent } from './utils/apis';
 
 const mockedTikTokData = [
   {username: 'walid', description: "some video content", tags: ["tag1", "tag2", "tag3"], viewsCount: 12, sharesCount: 111, likesCount: 2132},
@@ -12,6 +13,7 @@ const mockedTikTokData = [
 function App() {
   const [hashtags, setHashtags] = useState([]);
   const [selectedHashtag, setSelectedHashtag] = useState("");
+  const [videosContent, setVideosContent] = useState([]);
 
   const selectHashtag = (hashtag) => {
     setSelectedHashtag(hashtag)
@@ -22,6 +24,13 @@ function App() {
       setHashtags(["test2sojfosijfoijsofijsoijfoijsdofijsoidjf", "test3shfsdhfiushfoshfuhiufh", "test4", "test5", "test6", "test7"]);
     }
    }, [hashtags]);
+
+   useEffect(() => {
+    fetchVideoContent()
+      .then(videos => {
+        setVideosContent(videos);
+      })
+   }, [])
 
   return (
     <div className="App">
