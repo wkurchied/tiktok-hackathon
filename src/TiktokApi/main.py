@@ -14,6 +14,7 @@ from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from numerize import numerize
 
 app = FastAPI()
 
@@ -22,9 +23,9 @@ class TikTokVideo(BaseModel):
     username: str
     description: str
     tags: List[str]
-    viewsCount: int
-    sharesCount: int
-    likesCount: int
+    viewsCount: str
+    sharesCount: str
+    likesCount: str
 
 
 @app.get("/hashtags")
@@ -56,10 +57,10 @@ def get_videos_by_hashtag(hashtag):
         video = TikTokVideo(
             username=h['author'],
             description=h['desc'],
-            tags=['asasd'],
-            viewsCount=h['stats']['playCount'],
-            sharesCount=h['stats']['shareCount'],
-            likesCount=h['stats']['diggCount']
+            tags=parse_hashtags(h['desc']),
+            viewsCount=human_format(h['stats']['playCount']),
+            sharesCount=human_format(h['stats']['shareCount']),
+            likesCount=human_format(h['stats']['diggCount'])
         )
         found_videos.append(video)
     return found_videos
@@ -67,5 +68,14 @@ def get_videos_by_hashtag(hashtag):
 def parse_hashtags(text):
     return [w.split()[0] for w in text.split('#')[1:]]
 
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+def human_format(num):
+    magnitude = 0
+    while abs(num) >= 1000:
+        magnitude += 1
+        num /= 1000.0
+    # add more suffixes if you need them
+    return '%.2f%s' % (num, ['', 'K', 'M', 'G', 'T', 'P'][magnitude])
+
+
+if __name__ == "__main__":
+    get_videos_by_hashtag('uk')
