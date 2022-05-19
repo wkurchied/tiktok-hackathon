@@ -15,7 +15,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
+import time
 
 app = FastAPI()
 
@@ -35,6 +35,7 @@ class TikTokVideo(BaseModel):
     sharesCount: str
     likesCount: str
     thumbnail:str
+    create_time:str
 
 
 @app.get("/hashtags")
@@ -70,7 +71,8 @@ def get_videos_by_hashtag(hashtag):
             viewsCount=human_format(h['stats']['playCount']),
             sharesCount=human_format(h['stats']['shareCount']),
             likesCount=human_format(h['stats']['diggCount']),
-            thumbnail=h['video']['shareCover'][1]
+            thumbnail=h['video']['shareCover'][1],
+            create_time=time.ctime(int(h['createTime']))
         )
         found_videos.append(video)
     return found_videos
