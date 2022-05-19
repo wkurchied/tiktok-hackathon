@@ -77,5 +77,5 @@ def human_format(num):
     return '%.2f%s' % (num, ['', 'K', 'M', 'G', 'T', 'P'][magnitude])
 
 
-if __name__ == "__main__":
-    get_videos_by_hashtag('uk')
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
