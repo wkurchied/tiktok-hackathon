@@ -19,7 +19,7 @@ const TiktokListItemLeftContent = ({ videoContent }) => {
 
         <div className="video-content-item">
           <span className="video-content-heading">Created on: </span> 
-          <span className="video-content-value">11/11/2011</span>
+          <span className="video-content-value">{videoContent.create_time}</span>
         </div>
 
         <div className="video-content-item">
