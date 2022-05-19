@@ -1,8 +1,10 @@
 .tiktok-item {
-    border: 1px solid grey;
     padding: 16px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
     height: 150px;
+    background-color: #262a31;
+    border-radius: 4px;
+    box-shadow: 0 0 16px rgb(0 0 0 / 30%);
 }
