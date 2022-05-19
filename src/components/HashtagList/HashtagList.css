@@ -1,0 +1,11 @@
+.HashtagListContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.HashtagList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
