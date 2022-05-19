@@ -1,4 +1,17 @@
 .FakeTokHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.FakeTokHeaderTitle {
     font-size: 26px;
     margin: 8px 0;
+}
+
+img {
+    width: 35px;
+    height: 35px;
+    margin: 8px;
 }

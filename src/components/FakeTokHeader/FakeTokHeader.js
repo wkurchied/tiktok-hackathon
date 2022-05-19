@@ -2,7 +2,10 @@ import "./FakeTokHeader.css";
 
 function FakeTokHeader() {
     return ( 
-        <h1 className="FakeTokHeader">FakeTok</h1>
+        <div className="FakeTokHeader">
+            <img alt="logo" src={require('../../assets/logo.png')} />
+            <h1 className="FakeTokHeaderTitle">FakeTok</h1>
+        </div>
      );
 }
 
