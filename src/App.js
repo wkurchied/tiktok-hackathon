@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import FakeTokHeader from './components/FakeTokHeader/FakeTokHeader';
 import HashtagList from './components/HashtagList/HashtagList';
 import TiktokList from './components/TiktokList';
-import './App.css';
 
 const mockedTikTokData = [
   {username: 'walid', description: "some video content", tags: ["tag1", "tag2", "tag3"], viewsCount: 12, sharesCount: 111, likesCount: 2132},

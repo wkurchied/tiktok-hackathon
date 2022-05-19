@@ -13,7 +13,10 @@ body {
   background-color: #191b20;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  text-align: center;
+  background-color: #191b20;
+  color: white;
+  height: 100%;
+  padding: 16px 150px;
 }
