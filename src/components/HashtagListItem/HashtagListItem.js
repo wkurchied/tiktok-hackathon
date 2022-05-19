@@ -1,8 +1,13 @@
 import "./HashtagListItem.css";
 
-function HashtagListItem({hashtag}) {
+function HashtagListItem({hashtag, selectHashtag, isSelected}) {
+
+    const onHashtagClick = () => {
+        selectHashtag(hashtag);      
+    }
+
     return ( 
-        <span className="HashtagListItem">#{hashtag}</span>
+        <span className={isSelected ? "HashtagListItem itemClicked" : "HashtagListItem"} onClick={() => onHashtagClick()}>#{hashtag}</span>
      );
 }
 

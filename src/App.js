@@ -12,7 +12,11 @@ const mockedTikTokData = [
 ]
 function App() {
   const [hashtags] = useState(["test1hgiusheiruhewiurhfiwshfdiaushfidshufliushfiuh", "test2sojfosijfoijsofijsoijfoijsdofijsoidjf", "test3shfsdhfiushfoshfuhiufh", "test4"]);
+  const [selectedHashtag, setSelectedHashtag] = useState("");
 
+  const selectHashtag = (hashtag) => {
+    setSelectedHashtag(hashtag)
+  }
   // TODO: get hashtags from BE
 /*   useEffect(() => {
        
@@ -21,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <FakeTokHeader />
-      <HashtagList hashtags={hashtags} />
+      <HashtagList hashtags={hashtags} selectedHashtag={selectedHashtag} selectHashtag={selectHashtag} />
       <TiktokList tiktokData={mockedTikTokData} />
     </div>
   );

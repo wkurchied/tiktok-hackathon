@@ -1,9 +1,14 @@
 .HashtagListItem {
-    background-color: #262a31;
+    cursor: pointer;
+    background-color: #343942;
     color: white;
     font-size: 14px;
     border-radius: 4px;
     margin: 8px;
     padding: 4px 8px;
     font-weight: bold;
+}
+
+.itemClicked {
+    color: #8fb6ff;
 }
