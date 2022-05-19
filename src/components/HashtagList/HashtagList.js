@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
 import HashtagListItem from "../HashtagListItem/HashtagListItem";
+import "./HashtagList.css";
 
-function HashtagList() {
-    const [hashtags, setHashtags] = useState(["test1", "test2", "test3", "test4"]);
-
-    // TODO: get hashtags from BE
-   /*  useEffect(() => {
-        if(hashtags && hashtags.length === 0) {
-            setHashtags("test1", "test2", "test3", "test4")
-        }
-    }, [hashtags]); */
-
+function HashtagList({hashtags}) {
     return ( 
         <div className="HashtagListContainer">
             <h2>Trending</h2>
