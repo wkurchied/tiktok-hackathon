@@ -5,8 +5,8 @@ import './styles.css';
 const TiktokList = ({ tiktokData }) => {
   return (
     <div className="tiktok-list">
-        {tiktokData.map(videoContent => (
-            <TiktokListItem videoContent={videoContent} />
+        {tiktokData.map((videoContent, index) => (
+            <TiktokListItem key={index} videoContent={videoContent} />
         ))}
     </div>
   );
