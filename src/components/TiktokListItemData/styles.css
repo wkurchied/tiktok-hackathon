@@ -2,6 +2,8 @@
     display: flex;
     margin-right: 12px;
     width: 70%;  
+    overflow: hidden;
+    overflow-wrap: anywhere;
 }
 
 .content-thumbnail {
