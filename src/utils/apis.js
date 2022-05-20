@@ -1,5 +1,5 @@
-export const fetchVideoContent = () => {
-    return fetch('https://many-streets-rule-82-180-147-170.loca.lt/videos/diy')
+export const fetchVideoContent = (selectedHashtag) => {
+    return fetch(`http://127.0.0.1:8000/videos/${selectedHashtag}`)
         .then(response => response.json());
 }
 

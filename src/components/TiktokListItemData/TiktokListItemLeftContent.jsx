@@ -4,7 +4,7 @@ import './styles.css';
 const TiktokListItemLeftContent = ({ videoContent }) => {
   return (
     <div className="left-side-content">
-      <img src={videoContent.thumbnail} className="content-thumbnail" />
+      <img alt='thumbnail' src={videoContent.thumbnail} className="content-thumbnail" />
       
       <div className="video-content-container">
         <div className="video-content-item">
