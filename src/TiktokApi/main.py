@@ -5,14 +5,9 @@
 from typing import List
 
 from api import Tiktok
-from download import Download
 from functools import reduce
-from TikTokApi import TikTokApi as tiktok
-import uvicorn
 
 from fastapi import FastAPI
-from fastapi.encoders import jsonable_encoder
-from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import time

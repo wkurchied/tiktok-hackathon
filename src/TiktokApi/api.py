@@ -1,11 +1,7 @@
 import requests
 import json
-import base64
-import time
 import re, traceback
-import urllib.parse
-import pickle
-from urllib.parse import urlencode, quote
+from urllib.parse import quote
 
 
 class Tiktok:
